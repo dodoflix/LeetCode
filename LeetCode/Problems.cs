@@ -6,6 +6,8 @@ public class Problems
     {
         switch (id)
         {
+            case 1:
+                return "";
             case 13:
                 Console.Write("Romanian number you want to convert:");
                 return RomanToInt(Console.ReadLine()).ToString();
@@ -14,7 +16,27 @@ public class Problems
         }
     }
 
-    private int RomanToInt(string? s)
+    /*
+     *  Problem 1:
+     *  https://leetcode.com/problems/two-sum/
+     */
+    private static int[] TwoSum(int[] nums, int target)
+    {
+        var total = 0;
+        var i = 0;
+        foreach (var number in nums)
+        {
+            
+        }
+        return null;
+    }
+
+    /*
+     *  Problem 13:
+     *  https://leetcode.com/problems/roman-to-integer/
+     *  https://leetcode.com/problems/roman-to-integer/submissions/876021956/
+     */
+    private static int RomanToInt(string? s)
     {
         if (s == null)
             return 0;
