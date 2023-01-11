@@ -19,16 +19,22 @@ public class Problems
     /*
      *  Problem 1:
      *  https://leetcode.com/problems/two-sum/
+     *  https://leetcode.com/problems/two-sum/submissions/876035668/
      */
     private static int[] TwoSum(int[] nums, int target)
     {
-        var total = 0;
-        var i = 0;
-        foreach (var number in nums)
+        for (var a = 0; a < nums.Length; a++)
         {
-            
+            for (var b = a + 1; b < nums.Length; b++)
+            {
+                if (nums[a] + nums[b] == target)
+                {
+                    return new[] { a, b };
+                }
+            }
         }
-        return null;
+
+        return Array.Empty<int>();
     }
 
     /*
@@ -68,6 +74,7 @@ public class Problems
                 total += number;
             }
         }
+
         return total;
     }
 }
