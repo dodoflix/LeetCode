@@ -1,10 +1,10 @@
 namespace LeetCode;
 
-public class OutputHelper
+public static class OutputHelper
 {
     public static string Write(string message, int ms)
     {
-        return $"{message} ({ms}ms)";
+        return $"[{message}] ({ms}ms)";
     }
 
     /*public static string WriteStringArray(string[] message, int ms)

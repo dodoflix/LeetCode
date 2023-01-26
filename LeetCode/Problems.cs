@@ -4,6 +4,7 @@ public class Problems
 {
     public string Solve(int id)
     {
+        // TODO FIX OUTPUT ???
         int startTime;
         int runTime;
         switch (id)
@@ -45,8 +46,8 @@ public class Problems
                         break;
                     newListNode = newListNode.next;
                 }
-                
-                return OutputHelper.Write(string.Join(',', numbers.ToArray()), runTime);
+
+                return OutputHelper.Write(string.Join(',', numbers), runTime);
             case 13:
                 var romanianNumber = InputHelper.ReadString("Romanian Number:");
                 
@@ -67,6 +68,7 @@ public class Problems
      */
     private static int[] TwoSum(int[] nums, int target)
     {
+        // TODO WRONG RESULT??
         for (var a = 0; a < nums.Length; a++)
         {
             for (var b = a + 1; b < nums.Length; b++)
@@ -87,6 +89,7 @@ public class Problems
      */
     private static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
     {
+        // TODO WRONG RESULT??
         var l1Temp = l1;
         var l2Temp = l2;
 
@@ -100,7 +103,7 @@ public class Problems
         {
             if (!l1Done)
             {
-                l1String = $"{l1Temp.val}{l1String}";
+                l1String = l1Temp.val.ToString();
                 if (l1Temp.next != null)
                     l1Temp = l1Temp.next;
                 else
@@ -109,7 +112,7 @@ public class Problems
 
             if (!l2Done)
             {
-                l2String = $"{l2Temp.val}{l2String}";
+                l2String += l2Temp.val.ToString();
                 if (l2Temp.next != null)
                     l2Temp = l2Temp.next;
                 else
@@ -143,6 +146,7 @@ public class Problems
      */
     private static int RomanToInt(string? s)
     {
+        // TODO WRONG RESULT??
         if (s == null)
             return 0;
         var charValues = new Dictionary<char, int>
