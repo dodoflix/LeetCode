@@ -9,23 +9,25 @@ public class Problems
         switch (id)
         {
             case 1:
-                // TODO Problem 1 user input
-                // return TwoSum(Console.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray(), Convert.ToInt32(Console.ReadLine()));
-                return "TODO";
+                var sum = InputHelper.ReadIntArray("Numbers:");
+                var target = InputHelper.ReadInt("Target:");
+
+                startTime = DateTime.Now.Millisecond;
+                var twoSumResult = TwoSum(sum, target);
+                runTime = DateTime.Now.Millisecond - startTime;
+                
+                return OutputHelper.Write(string.Join(',', twoSumResult), runTime);
             case 2:
-                // TODO Problem 2 user input
-                Console.Write("First ListNode (1,2,3):");
-                var l1 = Console.ReadLine();
+                var l1 = InputHelper.ReadIntArray("First ListNode:");
                 var l1Temp = new List<ListNode>();
-                foreach (var num in l1.Split(',').Reverse())
+                foreach (var num in l1.Reverse())
                 {
                     l1Temp.Add(new ListNode(Convert.ToInt32(num), l1Temp.Count != 0 ? l1Temp.Last() : null));
                 }
                 
-                Console.Write("Second ListNode (1,2,3):");
-                var l2 = Console.ReadLine();
+                var l2 = InputHelper.ReadIntArray("Second ListNode:");
                 var l2Temp = new List<ListNode>();
-                foreach (var num in l2.Split(',').Reverse())
+                foreach (var num in l2.Reverse())
                 {
                     l2Temp.Add(new ListNode(Convert.ToInt32(num), l2Temp.Count != 0 ? l2Temp.Last() : null));
                 }
@@ -44,16 +46,15 @@ public class Problems
                     newListNode = newListNode.next;
                 }
                 
-                return $"[{string.Join(',', numbers.ToArray())}] ({runTime}ms)";
+                return OutputHelper.Write(string.Join(',', numbers.ToArray()), runTime);
             case 13:
-                Console.Write("Romanian number you want to convert:");
-                var input = Console.ReadLine();
+                var romanianNumber = InputHelper.ReadString("Romanian Number:");
                 
                 startTime = DateTime.Now.Millisecond;
-                var result = RomanToInt(input).ToString();
+                var romanToIntResult = RomanToInt(romanianNumber).ToString();
                 runTime = DateTime.Now.Millisecond - startTime;
                 
-                return $"{result} ({runTime}ms)";
+                return OutputHelper.Write(romanToIntResult, runTime);
             default:
                 return "Defined problem not found.";
         }
@@ -119,13 +120,17 @@ public class Problems
                 break;
         }
         
-        var l3Temp = (Convert.ToInt32(l1String) + Convert.ToInt32(l2String)).ToString().ToCharArray();
+        var l3Temp = (Convert.ToInt32(l1String) + Convert.ToInt32(l2String))
+            .ToString()
+            .Split()
+            .Select(int.Parse)
+            .ToArray();
         
         var listNodes = new List<ListNode>();
 
-        foreach (var i in l3Temp.Reverse())
+        foreach (var val in l3Temp.Reverse())
         {
-            listNodes.Add(new ListNode(Convert.ToInt32((i.ToString())), listNodes.Count != 0 ? listNodes.Last() : null));
+            listNodes.Add(new ListNode(val, listNodes.Count != 0 ? listNodes.Last() : null));
         }
 
         return listNodes.Last();
